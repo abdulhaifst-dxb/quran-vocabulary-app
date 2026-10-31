@@ -338,33 +338,68 @@
             });
         }
         let speedTimer = 120, speedInterval = null, speedScoreVal = 0;
+        let speedDeck = [];
+
         function startSpeedGame() {
             document.getElementById('speed-start-area').classList.add('hidden');
             speedTimer = 120; speedScoreVal = 0;
             document.getElementById('speed-score').innerText = speedScoreVal;
+            
+            // Freshly shuffle deck so words don't repeat
+            speedDeck = [...vocabData].sort(() => 0.5 - Math.random());
+
             speedInterval = setInterval(() => {
                 speedTimer--;
                 document.getElementById('speed-timer').innerText = `⏱️ ${speedTimer}s`;
-                if (speedTimer <= 0) { clearInterval(speedInterval); alert("Game Over! Score: " + speedScoreVal); }
+                if (speedTimer <= 0) { 
+                    clearInterval(speedInterval); 
+                    alert("Game Over! Final Score: " + speedScoreVal); 
+                    resetSpeedGame();
+                }
             }, 1000);
             nextSpeedRound();
         }
+
         function nextSpeedRound() {
             if (speedTimer <= 0) return;
-            const correctItem = vocabData[Math.floor(Math.random() * vocabData.length)];
+            
+            // Reshuffle automatically if deck runs out
+            if (speedDeck.length === 0) {
+                speedDeck = [...vocabData].sort(() => 0.5 - Math.random());
+            }
+
+            const correctItem = speedDeck.pop();
+
             document.getElementById('speed-word').innerText = correctItem.arabic;
             document.getElementById('speed-translit').innerText = `Root: ${correctItem.root}`;
+            
             const container = document.getElementById('speed-options');
             container.innerHTML = '';
-            [vocabData[Math.floor(Math.random()*vocabData.length)], vocabData[Math.floor(Math.random()*vocabData.length)], vocabData[Math.floor(Math.random()*vocabData.length)], correctItem].sort(() => 0.5 - Math.random()).forEach(opt => {
+            
+            let wrongOptions = vocabData.filter(i => i.id !== correctItem.id).sort(() => 0.5 - Math.random()).slice(0, 3);
+            let options = [...wrongOptions, correctItem].sort(() => 0.5 - Math.random());
+
+            options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = "p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:bg-slate-700 transition font-medium text-sm";
                 btn.innerText = opt.tamil;
-                btn.onclick = () => { if(opt.id === correctItem.id) { speedScoreVal++; document.getElementById('speed-score').innerText = speedScoreVal; } nextSpeedRound(); };
+                btn.onclick = () => { 
+                    if(opt.id === correctItem.id) { 
+                        speedScoreVal++; 
+                        document.getElementById('speed-score').innerText = speedScoreVal; 
+                    } 
+                    nextSpeedRound(); 
+                };
                 container.appendChild(btn);
             });
         }
-        function resetSpeedGame() { clearInterval(speedInterval); document.getElementById('speed-start-area').classList.remove('hidden'); }
+
+        function resetSpeedGame() { 
+            clearInterval(speedInterval); 
+            document.getElementById('speed-start-area').classList.remove('hidden'); 
+            document.getElementById('speed-timer').innerText = `⏱️ 120s`;
+        }
+
         function renderBrowser() {
             const tbody = document.getElementById('browser-tbody');
             tbody.innerHTML = '';
