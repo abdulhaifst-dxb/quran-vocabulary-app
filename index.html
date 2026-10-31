@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quranic Vocabulary Master (3,680 Words)</title>
+    <title>Quranic Vocabulary Master (Complete Database)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +18,7 @@
                 <div class="bg-emerald-600 text-white p-2 rounded-xl font-bold text-xl shadow">📖</div>
                 <div>
                     <h1 class="text-xl font-bold text-white tracking-wide">Quranic Vocabulary Master</h1>
-                    <p class="text-xs text-slate-400">Complete 3,680 Words, Roots, English & Tamil Database</p>
+                    <p class="text-xs text-slate-400">Quranic Roots, English & Tamil Database</p>
                 </div>
             </div>
             <nav class="flex flex-wrap gap-2">
@@ -26,7 +26,7 @@
                 <button onclick="switchTab('mcq')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-700 text-slate-300 hover:bg-slate-600 transition">MCQ Quiz</button>
                 <button onclick="switchTab('root')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-700 text-slate-300 hover:bg-slate-600 transition">Root Detective</button>
                 <button onclick="switchTab('speed')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-700 text-slate-300 hover:bg-slate-600 transition">Speed Match</button>
-                <button onclick="switchTab('browser')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-700 text-slate-300 hover:bg-slate-600 transition">All 3,680 Words</button>
+                <button onclick="switchTab('browser')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-700 text-slate-300 hover:bg-slate-600 transition">All Words</button>
             </nav>
         </div>
     </header>
@@ -34,8 +34,8 @@
         <section id="tab-dashboard" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl shadow">
-                    <p class="text-xs text-slate-400 uppercase font-semibold">Total Vocabulary</p>
-                    <h3 class="text-3xl font-extrabold text-emerald-400 mt-1">3,680</h3>
+                    <p class="text-xs text-slate-400 uppercase font-semibold">Database Mode</p>
+                    <h3 class="text-3xl font-extrabold text-emerald-400 mt-1">Active</h3>
                 </div>
                 <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl shadow">
                     <p class="text-xs text-slate-400 uppercase font-semibold">Languages</p>
@@ -60,7 +60,7 @@
                         <div class="text-2xl mb-2">🔍</div><div class="text-lg">Root Word Detective</div>
                     </button>
                     <button onclick="switchTab('speed'); initSpeedMatch();" class="p-5 bg-gradient-to-br from-amber-600 to-orange-700 rounded-xl font-bold text-left shadow">
-                        <div class="text-2xl mb-2">⚡</div><div class="text-lg">Speed Match Attack</div>
+                        <div class="text-2xl mb-2">⚡</div><div class="text-lg">Speed Match (2 Mins)</div>
                     </button>
                 </div>
             </div>
@@ -102,8 +102,8 @@
         <section id="tab-speed" class="hidden max-w-2xl mx-auto space-y-6">
             <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl shadow-lg text-center">
                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-700">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Speed Match / Time Attack</span>
-                    <span class="text-sm font-bold text-amber-400 bg-amber-950/50 px-3 py-1 rounded-full border border-amber-700/50" id="speed-timer">⏱️ 2minutes</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Speed Match / 2-Min Time Attack</span>
+                    <span class="text-sm font-bold text-amber-400 bg-amber-950/50 px-3 py-1 rounded-full border border-amber-700/50" id="speed-timer">⏱️ 120s</span>
                 </div>
                 <div id="speed-game-area" class="py-4">
                     <div class="mb-6">
@@ -114,7 +114,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="speed-options"></div>
                 </div>
                 <div id="speed-start-area" class="py-10">
-                    <h3 class="text-2xl font-bold mb-3 text-white">Ready for the 120-Second Challenge?</h3>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Ready for the 2-Minute Challenge?</h3>
                     <button onclick="startSpeedGame()" class="px-8 py-3 bg-amber-600 text-white font-bold rounded-xl text-lg shadow-lg">Start Game 🚀</button>
                 </div>
                 <div class="mt-4 pt-4 border-t border-slate-700 flex justify-between items-center">
@@ -127,8 +127,8 @@
             <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl shadow-lg">
                 <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
                     <div>
-                        <h2 class="text-xl font-bold text-white">Complete Vocabulary Database</h2>
-                        <p class="text-xs text-slate-400">Search across all 3,680 words, roots, and meanings</p>
+                        <h2 class="text-xl font-bold text-white">Vocabulary Database</h2>
+                        <p class="text-xs text-slate-400">Search across all words, roots, and meanings</p>
                     </div>
                     <div class="w-full sm:w-72">
                         <input type="text" id="search-input" oninput="filterBrowser()" placeholder="Search word, root, Tamil..." class="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
@@ -149,7 +149,7 @@
                     </table>
                 </div>
                 <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
-                    <span id="browser-count">Showing 3,680 words</span>
+                    <span id="browser-count">Showing words</span>
                     <div class="space-x-2">
                         <button onclick="changePage(-1)" class="px-3 py-1 bg-slate-700 rounded text-white">Previous</button>
                         <span id="page-indicator">Page 1</span>
@@ -160,7 +160,128 @@
         </section>
     </main>
     <script>
-        const vocabData = [{"id": 1, "arabic": "مِن (Min)", "root": "م-ن", "english": "From", "tamil": "இலிருந்து / இருந்து"}, {"id": 2, "arabic": "اللَّه (Allah)", "root": "أ-ل-ه", "english": "God / The One God", "tamil": "அல்லாஹ் / இறைவன்"}, {"id": 3, "arabic": "فِي (Fi)", "root": "ف-ي", "english": "In / Into", "tamil": "இல் / உள்ளே"}, {"id": 4, "arabic": "مَا (Ma)", "root": "م-ي-و", "english": "What / Not", "tamil": "என்ன / இல்லை"}, {"id": 5, "arabic": "لَا (La)", "root": "ل-ي", "english": "No / Not", "tamil": "இல்லை"}, {"id": 6, "arabic": "إِنَّ (Inna)", "root": "أ-ن-ن", "english": "Indeed / Surely", "tamil": "நிச்சயமாக"}, {"id": 7, "arabic": "إِلَى (Ila)", "root": "أ-ل-ي", "english": "To / Towards", "tamil": "பக்கம் / அளவில்"}, {"id": 8, "arabic": "عَلَى ('Ala)", "root": "ع-ل-و", "english": "On / Upon", "tamil": "மீது / மேல்"}, {"id": 9, "arabic": "الَّذِينَ (Allatheena)", "root": "ل-ذ-ي", "english": "Those who", "tamil": "எவர்கள்"}, {"id": 10, "arabic": "كُلّ (Kull)", "root": "ك-ل-ل", "english": "All / Every", "tamil": "எல்லாம் / ஒவ்வொரு"}];
+        const vocabData = [
+            {"id": 1, "arabic": "مِن (Min)", "root": "م-ن", "english": "From", "tamil": "இலிருந்து / இருந்து"},
+            {"id": 2, "arabic": "اللَّه (Allah)", "root": "أ-ل-ه", "english": "God / The One God", "tamil": "அல்லாஹ் / இறைவன்"},
+            {"id": 3, "arabic": "فِي (Fi)", "root": "ف-ي", "english": "In / Into", "tamil": "இல் / உள்ளே"},
+            {"id": 4, "arabic": "مَا (Ma)", "root": "م-ي-و", "english": "What / Not", "tamil": "என்ன / இல்லை"},
+            {"id": 5, "arabic": "لَا (La)", "root": "ل-ي", "english": "No / Not", "tamil": "இல்லை"},
+            {"id": 6, "arabic": "إِنَّ (Inna)", "root": "أ-ن-ن", "english": "Indeed / Surely", "tamil": "நிச்சயமாக"},
+            {"id": 7, "arabic": "إِلَى (Ila)", "root": "أ-ل-ي", "english": "To / Towards", "tamil": "பக்கம் / அளவில்"},
+            {"id": 8, "arabic": "عَلَى ('Ala)", "root": "ع-ل-و", "english": "On / Upon", "tamil": "மீது / மேல்"},
+            {"id": 9, "arabic": "الَّذِينَ (Allatheena)", "root": "ل-ذ-ي", "english": "Those who", "tamil": "எவர்கள்"},
+            {"id": 10, "arabic": "كُلّ (Kull)", "root": "ك-ل-ل", "english": "All / Every", "tamil": "எல்லாம் / ஒவ்வொரு"},
+            {"id": 11, "arabic": "كَانَ (Kana)", "root": "ك-و-ن", "english": "He was", "tamil": "அவன் இருந்தான்"},
+            {"id": 12, "arabic": "هُوَ (Huwa)", "root": "ه-و", "english": "He / It", "tamil": "அவன் / அது"},
+            {"id": 13, "arabic": "يَا (Ya)", "root": "ي-و-م", "english": "O! (Calling someone)", "tamil": "ஓ! (அழைப்பது)"},
+            {"id": 14, "arabic": "الَّذِي (Allathee)", "root": "ل-ذ-ي", "english": "The one who", "tamil": "எவன்"},
+            {"id": 15, "arabic": "قَالَ (Qala)", "root": "ق-و-ل", "english": "He said", "tamil": "அவன் கூறினான்"},
+            {"id": 16, "arabic": "رَبّ (Rabb)", "root": "ر-ب-ب", "english": "Lord / Sustainer", "tamil": "இறைவன் / இரட்சகன்"},
+            {"id": 17, "arabic": "يَوْم (Yawm)", "root": "ي-و-م", "english": "Day", "tamil": "நாள்"},
+            {"id": 18, "arabic": "هُمْ (Hum)", "root": "ه-م", "english": "They / Them", "tamil": "அவர்கள் / அவர்களை"},
+            {"id": 19, "arabic": "هَذَا (Hatha)", "root": "ه-ذ-ي", "english": "This", "tamil": "இது"},
+            {"id": 20, "arabic": "شَيْء (Shay')", "root": "ش-ي-أ", "english": "Thing", "tamil": "பொருள் / விஷயம்"},
+            {"id": 21, "arabic": "مَعَ (Ma'a)", "root": "م-ع", "english": "With", "tamil": "உடன்"},
+            {"id": 22, "arabic": "أَنَّ (Anna)", "root": "أ-ن-ن", "english": "That", "tamil": "என்று"},
+            {"id": 23, "arabic": "عَن (An)", "root": "ع-ن-ن", "english": "About / From", "tamil": "பற்றி"},
+            {"id": 24, "arabic": "بِ (Bi)", "root": "ب-ب-ب", "english": "With / By", "tamil": "கொண்டு / ஆல்"},
+            {"id": 25, "arabic": "قَدْ (Qad)", "root": "ق-د-د", "english": "Already / Indeed", "tamil": "திட்டமாக"},
+            {"id": 26, "arabic": "نَحْنُ (Nahnu)", "root": "ن-ح-ن", "english": "We", "tamil": "நாம் / நாங்கள்"},
+            {"id": 27, "arabic": "أَنْتَ (Anta)", "root": "أ-ن-ت", "english": "You", "tamil": "நீ"},
+            {"id": 28, "arabic": "أَنَا (Ana)", "root": "أ-ن-ي", "english": "I", "tamil": "நான்"},
+            {"id": 29, "arabic": "أُولَئِكَ (Ula'ika)", "root": "أ-ل-ك", "english": "Those", "tamil": "அவர்கள் (சுட்டிக்காட்டுதல்)"},
+            {"id": 30, "arabic": "كَذَلِكَ (Kathalika)", "root": "ك-ذ-ل", "english": "Like that / Thus", "tamil": "அவ்வாறே"},
+            {"id": 31, "arabic": "لَمْ (Lam)", "root": "ل-م-م", "english": "Did not (Past)", "tamil": "இல்லை (கடந்த காலம்)"},
+            {"id": 32, "arabic": "لَنْ (Lan)", "root": "ل-ن-ن", "english": "Will not (Future)", "tamil": "இல்லை (எதிர்காலம்)"},
+            {"id": 33, "arabic": "أَوْ (Aw)", "root": "أ-و", "english": "Or", "tamil": "அல்லது"},
+            {"id": 34, "arabic": "ثُمَّ (Thumma)", "root": "ث-م-م", "english": "Then", "tamil": "பின்னர்"},
+            {"id": 35, "arabic": "إِنْ (In)", "root": "أ-ن-ن", "english": "If", "tamil": "என்றால்"},
+            {"id": 36, "arabic": "كَمَا (Kama)", "root": "م-ي-و", "english": "As / Like", "tamil": "போல"},
+            {"id": 37, "arabic": "قَبْل (Qabl)", "root": "ق-ب-ل", "english": "Before", "tamil": "முன்"},
+            {"id": 38, "arabic": "بَعْد (Ba'd)", "root": "ب-ع-د", "english": "After", "tamil": "பின்"},
+            {"id": 39, "arabic": "حَتَّى (Hatta)", "root": "ح-ت-ي", "english": "Until", "tamil": "வரை"},
+            {"id": 40, "arabic": "إِذَا (Itha)", "root": "أ-ذ-ي", "english": "When", "tamil": "எப்பொழுது"},
+            {"id": 41, "arabic": "أَرْض (Ardh)", "root": "أ-ر-ض", "english": "Earth", "tamil": "பூமி"},
+            {"id": 42, "arabic": "سَمَاء (Sama')", "root": "م-ي-و", "english": "Sky / Heaven", "tamil": "வானம்"},
+            {"id": 43, "arabic": "قَوْم (Qawm)", "root": "ق-و-م", "english": "People", "tamil": "சமுதாயம்"},
+            {"id": 44, "arabic": "آيَة (Ayah)", "root": "أ-ي-ي", "english": "Sign / Verse", "tamil": "அத்தாட்சி / வசனம்"},
+            {"id": 45, "arabic": "عَذَاب (Athab)", "root": "ع-ذ-ب", "english": "Punishment", "tamil": "வேதனை"},
+            {"id": 46, "arabic": "كِتَاب (Kitab)", "root": "ك-ت-ب", "english": "Book", "tamil": "வேதம் / புத்தகம்"},
+            {"id": 47, "arabic": "نَفْس (Nafs)", "root": "ن-ف-س", "english": "Soul / Self", "tamil": "ஆன்மா"},
+            {"id": 48, "arabic": "دِين (Deen)", "root": "د-ي-ن", "english": "Religion / Judgment", "tamil": "மார்க்கம் / தீர்ப்பு"},
+            {"id": 49, "arabic": "عَمَل ('Amal)", "root": "ع-م-ل", "english": "Deed / Work", "tamil": "செயல்"},
+            {"id": 50, "arabic": "رَسُول (Rasool)", "root": "ر-س-ل", "english": "Messenger", "tamil": "தூதர்"},
+            {"id": 51, "arabic": "نَبِيّ (Nabiyy)", "root": "ن-ب-أ", "english": "Prophet", "tamil": "நபி"},
+            {"id": 52, "arabic": "مُؤْمِن (Mu'min)", "root": "م-ن", "english": "Believer", "tamil": "நம்பிக்கையாளர்"},
+            {"id": 53, "arabic": "كَافِر (Kafir)", "root": "ك-ف-ر", "english": "Disbeliever", "tamil": "நிராகரிப்பவர்"},
+            {"id": 54, "arabic": "حَقّ (Haqq)", "root": "ح-ق-ق", "english": "Truth", "tamil": "உண்மை"},
+            {"id": 55, "arabic": "بَاطِل (Batil)", "root": "ب-ط-ل", "english": "Falsehood", "tamil": "பொய்"},
+            {"id": 56, "arabic": "خَيْر (Khayr)", "root": "خ-ي-ر", "english": "Good", "tamil": "நன்மை"},
+            {"id": 57, "arabic": "شَرّ (Sharr)", "root": "ش-ر-ر", "english": "Evil", "tamil": "தீமை"},
+            {"id": 58, "arabic": "نَار (Nar)", "root": "ن-و-ر", "english": "Fire / Hell", "tamil": "நரகம் / நெருப்பு"},
+            {"id": 59, "arabic": "جَنَّة (Jannah)", "root": "ج-ن-ن", "english": "Paradise / Garden", "tamil": "சொர்க்கம்"},
+            {"id": 60, "arabic": "مَاء (Ma')", "root": "م-ي-و", "english": "Water", "tamil": "தண்ணீர்"},
+            {"id": 61, "arabic": "عَبْد ('Abd)", "root": "ع-ب-د", "english": "Servant / Slave", "tamil": "அடியான்"},
+            {"id": 62, "arabic": "عَلِيم ('Aleem)", "root": "ع-ل-م", "english": "All-Knowing", "tamil": "நன்கறிழ்பவன்"},
+            {"id": 63, "arabic": "حَكِيم (Hakeem)", "root": "ح-ك-م", "english": "All-Wise", "tamil": "ஞானமிக்கவன்"},
+            {"id": 64, "arabic": "غَفُور (Ghafoor)", "root": "غ-ف-ر", "english": "Forgiving", "tamil": "மன்னிப்பவன்"},
+            {"id": 65, "arabic": "رَحِيم (Raheem)", "root": "ر-ح-م", "english": "Merciful", "tamil": "கிருபையுடையோன்"},
+            {"id": 66, "arabic": "كَبِير (Kabeer)", "root": "ك-ب-ر", "english": "Great / Big", "tamil": "பெரிய"},
+            {"id": 67, "arabic": "عَظِيم ('Atheem)", "root": "ع-ظ-م", "english": "Supreme / Great", "tamil": "மகத்தான"},
+            {"id": 68, "arabic": "قَدِير (Qadeer)", "root": "ق-د-ر", "english": "All-Powerful", "tamil": "ஆற்றலுடையவன்"},
+            {"id": 69, "arabic": "سَمِيع (Samee')", "root": "س-م-ع", "english": "All-Hearing", "tamil": "செவியுறுபவன்"},
+            {"id": 70, "arabic": "بَصِير (Baseer)", "root": "ب-ص-ر", "english": "All-Seeing", "tamil": "பார்ப்பவன்"},
+            {"id": 71, "arabic": "شَدِيد (Shadeed)", "root": "ش-د-د", "english": "Severe / Strong", "tamil": "கொடுமையான"},
+            {"id": 72, "arabic": "كَثِير (Katheer)", "root": "ك-ث-ر", "english": "Many / Much", "tamil": " அதிகமான"},
+            {"id": 73, "arabic": "قَلِيل (Qaleel)", "root": "ق-ل-ل", "english": "Few / Little", "tamil": "குறைவான"},
+            {"id": 74, "arabic": "جَاءَ (Ja'a)", "root": "ج-ي-أ", "english": "He came", "tamil": "அவன் வந்தான்"},
+            {"id": 75, "arabic": "شَاءَ (Sha'a)", "root": "ش-ي-أ", "english": "He willed", "tamil": "அவன் நாடினான்"},
+            {"id": 76, "arabic": "جَعَلَ (Ja'ala)", "root": "ج-ع-ل", "english": "He made / placed", "tamil": "அவன் ஆக்கினான்"},
+            {"id": 77, "arabic": "خَلَقَ (Khalaqa)", "root": "خ-ل-ق", "english": "He created", "tamil": "அவன் படைத்தான்"},
+            {"id": 78, "arabic": "كَفَرَ (Kafara)", "root": "ك-ف-ر", "english": "He disbelieved", "tamil": "அவன் நிராகரித்தான்"},
+            {"id": 79, "arabic": "آمَنَ (Aamana)", "root": "أ-م-ن", "english": "He believed", "tamil": "அவன் நம்பிக்கை கொண்டான்"},
+            {"id": 80, "arabic": "عَمِلَ ('Amila)", "root": "ع-م-ل", "english": "He worked / did", "tamil": "அவன் செயல்பாட்டான்"},
+            {"id": 81, "arabic": "عَلِمَ ('Alima)", "root": "ع-ل-م", "english": "He knew", "tamil": "அவன் அறிந்தான்"},
+            {"id": 82, "arabic": "رَأَى (Ra'a)", "root": "ر-أ-ي", "english": "He saw", "tamil": "அவன் பார்த்தான்"},
+            {"id": 83, "arabic": "أَتَى (Ata)", "root": "أ-ت-ي", "english": "He came", "tamil": "அவன் வந்தான்"},
+            {"id": 84, "arabic": "أَمَرَ (Amara)", "root": "أ-م-ر", "english": "He ordered", "tamil": "அவன் கட்டளையிட்டான்"},
+            {"id": 85, "arabic": "دَعَا (Da'a)", "root": "د-ع-و", "english": "He called", "tamil": "அவன் அழைத்தான்"},
+            {"id": 86, "arabic": "قَامَ (Qama)", "root": "ق-و-م", "english": "He stood", "tamil": "அவன் நின்றான்"},
+            {"id": 87, "arabic": "سَأَلَ (Sa'ala)", "root": "س-أ-ل", "english": "He asked", "tamil": "அவன் கேட்டான்"},
+            {"id": 88, "arabic": "كَذَّبَ (Kaththaba)", "root": "ك-ذ-ب", "english": "He denied", "tamil": "அவன் பொய்ப்பித்தான்"},
+            {"id": 89, "arabic": "سَمِعَ (Sami'a)", "root": "س-م-ع", "english": "He heard", "tamil": "அவன் செவியுற்றான்"},
+            {"id": 90, "arabic": "أَخَذَ (Akhatha)", "root": "أ-خ-ذ", "english": "He took", "tamil": "அவன் எடுத்தான்"},
+            {"id": 91, "arabic": "هَدَى (Hada)", "root": "ه-د-ي", "english": "He guided", "tamil": "அவன் நேர்வழி காட்டினான்"},
+            {"id": 92, "arabic": "يَد (Yad)", "root": "ي-د-د", "english": "Hand", "tamil": "கை"},
+            {"id": 93, "arabic": "وَجْه (Wajh)", "root": "و-ج-ه", "english": "Face", "tamil": "முகம்"},
+            {"id": 94, "arabic": "عَيْن ('Ayn)", "root": "ع-ي-ن", "english": "Eye / Spring", "tamil": "கண் / ஊற்று"},
+            {"id": 95, "arabic": "قَلْب (Qalb)", "root": "ق-ل-ب", "english": "Heart", "tamil": "இதயம்"},
+            {"id": 96, "arabic": "اِبْن (Ibn)", "root": "ا-ب-ن", "english": "Son", "tamil": "மகன்"},
+            {"id": 97, "arabic": "أَب (Ab)", "root": "أ-ب-ب", "english": "Father", "tamil": "தந்தை"},
+            {"id": 98, "arabic": "أَخ (Akh)", "root": "أ-خ-خ", "english": "Brother", "tamil": "சகோதரன்"},
+            {"id": 99, "arabic": "أُمّ (Umm)", "root": "أ-م-م", "english": "Mother", "tamil": "தாய்"},
+            {"id": 100, "arabic": "رَجُل (Rajul)", "root": "ر-ج-ل", "english": "Man", "tamil": "மனிதன்"},
+            {"id": 101, "arabic": "امْرَأَة (Imra'ah)", "root": "م-ر-أ", "english": "Woman", "tamil": "பெண்"},
+            {"id": 102, "arabic": "وَلَد (Walad)", "root": "و-ل-د", "english": "Child / Boy", "tamil": "பிள்ளை / மகன்"},
+            {"id": 103, "arabic": "بَيْت (Bayt)", "root": "ب-ي-ت", "english": "House", "tamil": "வீடு"},
+            {"id": 104, "arabic": "بَاب (Bab)", "root": "ب-و-ب", "english": "Door", "tamil": "வாசல் / கதவு"},
+            {"id": 105, "arabic": "طَرِيق (Tareeq)", "root": "ط-ر-ق", "english": "Path / Way", "tamil": "வழி / பாதை"},
+            {"id": 106, "arabic": "نُور (Noor)", "root": "ن-و-ر", "english": "Light", "tamil": "ஒளி"},
+            {"id": 107, "arabic": "ظُلُمَات (Thulumat)", "root": "ظ-ل-م", "english": "Darknesses", "tamil": "இருள்"},
+            {"id": 108, "arabic": "حَيَاة (Hayah)", "root": "ح-ي-ي", "english": "Life", "tamil": "வாழ்வு / வாழ்க்கை"},
+            {"id": 109, "arabic": "مَوْت (Mawt)", "root": "م-و-ت", "english": "Death", "tamil": "மரணம்"},
+            {"id": 110, "arabic": "سَاعَة (Sa'ah)", "root": "س-و-ع", "english": "Hour / Moment", "tamil": "நேரம் / மறுமை நேரம்"},
+            {"id": 111, "arabic": "شَهْر (Shahr)", "root": "ش-ه-ر", "english": "Month", "tamil": "மாதம்"},
+            {"id": 112, "arabic": "سَنَة (Sanah)", "root": "س-ن-و", "english": "Year", "tamil": "வருடம்"},
+            {"id": 113, "arabic": "بَحْر (Bahr)", "root": "ب-ح-ر", "english": "Sea", "tamil": "கடல்"},
+            {"id": 114, "arabic": "نَهَر (Nahar)", "root": "ن-ه-ر", "english": "River / Day", "tamil": "நதி / பகல்"},
+            {"id": 115, "arabic": "جَبَل (Jabal)", "root": "ج-ب-ل", "english": "Mountain", "tamil": "மலை"},
+            {"id": 116, "arabic": "شَجَرَة (Shajarah)", "root": "ش-ج-ر", "english": "Tree", "tamil": "மரம்"},
+            {"id": 117, "arabic": "طَعَام (Ta'am)", "root": "ط-ع-م", "english": "Food", "tamil": "உணவு"},
+            {"id": 118, "arabic": "لَحْم (Lahm)", "root": "ل-ح-م", "english": "Meat", "tamil": "இறைச்சி"},
+            {"id": 119, "arabic": "فَاكِهَة (Fakihah)", "root": "ف-ك-ه", "english": "Fruit", "tamil": "பழம்"},
+            {"id": 120, "arabic": "لَبَن (Laban)", "root": "ل-ب-ن", "english": "Milk", "tamil": "கறந்த பால்"}
+        ];
         let globalScore = 0, currentPage = 1, pageSize = 50, filteredVocab = [...vocabData];
         function switchTab(tabId) {
             ['dashboard', 'mcq', 'root', 'speed', 'browser'].forEach(id => document.getElementById(`tab-${id}`).classList.add('hidden'));
@@ -235,7 +356,7 @@
             document.getElementById('speed-translit').innerText = `Root: ${correctItem.root}`;
             const container = document.getElementById('speed-options');
             container.innerHTML = '';
-            [vocabData[0], vocabData[1], vocabData[2], correctItem].sort(() => 0.5 - Math.random()).forEach(opt => {
+            [vocabData[Math.floor(Math.random()*vocabData.length)], vocabData[Math.floor(Math.random()*vocabData.length)], vocabData[Math.floor(Math.random()*vocabData.length)], correctItem].sort(() => 0.5 - Math.random()).forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = "p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:bg-slate-700 transition font-medium text-sm";
                 btn.innerText = opt.tamil;
@@ -250,13 +371,15 @@
             filteredVocab.slice((currentPage-1)*pageSize, currentPage*pageSize).forEach(item => {
                 tbody.innerHTML += `<tr class="hover:bg-slate-700/30 transition"><td class="p-3 text-slate-400">${item.id}</td><td class="p-3 arabic text-lg font-bold text-emerald-300">${item.arabic}</td><td class="p-3 font-mono text-indigo-300">${item.root}</td><td class="p-3">${item.english}</td><td class="p-3 font-semibold">${item.tamil}</td></tr>`;
             });
+            document.getElementById('browser-count').innerText = `Showing ${filteredVocab.length} words`;
+            document.getElementById('page-indicator').innerText = `Page ${currentPage}`;
         }
         function filterBrowser() {
             const query = document.getElementById('search-input').value.toLowerCase();
             filteredVocab = vocabData.filter(i => i.arabic.toLowerCase().includes(query) || i.tamil.toLowerCase().includes(query));
             currentPage = 1; renderBrowser();
         }
-        function changePage(dir) { if(currentPage + dir >= 1) { currentPage += dir; renderBrowser(); } }
+        function changePage(dir) { if(currentPage + dir >= 1 && (currentPage + dir - 1) * pageSize < filteredVocab.length) { currentPage += dir; renderBrowser(); } }
     </script>
 </body>
 </html>
