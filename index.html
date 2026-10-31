@@ -216,10 +216,10 @@
                 container.appendChild(btn);
             });
         }
-        let speedTimer = 30, speedInterval = null, speedScoreVal = 0;
+        let speedTimer = 120, speedInterval = null, speedScoreVal = 0;
         function startSpeedGame() {
             document.getElementById('speed-start-area').classList.add('hidden');
-            speedTimer = 30; speedScoreVal = 0;
+            speedTimer = 120; speedScoreVal = 0;
             document.getElementById('speed-score').innerText = speedScoreVal;
             speedInterval = setInterval(() => {
                 speedTimer--;
