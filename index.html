@@ -310,33 +310,91 @@
         }
         function checkMCQAnswer(selectedId, correctId, btnElement) {
             const buttons = document.querySelectorAll('#mcq-options button');
-            buttons.forEach(b => b.disabled = true);
-            if (selectedId === correctId) {
-                btnElement.className = "p-4 bg-emerald-900/80 border border-emerald-500 rounded-xl text-left font-medium text-sm flex flex-col gap-1 shadow";
-                globalScore++;
-                document.getElementById('dash-score').innerText = globalScore;
-                document.getElementById('mcq-score').innerText = globalScore;
-            } else {
-                btnElement.className = "p-4 bg-rose-900/80 border border-rose-500 rounded-xl text-left font-medium text-sm flex flex-col gap-1 shadow";
-            }
+            buttons.forEach(b => {
+                b.disabled = true;
+                // Highlight the correct answer in green
+                // We check the content or store data attributes, or check if the button represents the correct ID
+            });
+            
+            // Highlight all options appropriately
+            buttons.forEach(b => {
+                // Let's identify the correct button by checking its text or matching with click behavior. 
+                // Alternatively, let's attach data-id to buttons:
+            });
+            
+            // Let's refine button creation to store data-id cleanly:
         }
+
+        // Refined MCQ and Root Quiz functions below:
+        function initMCQ() {
+            const correctItem = vocabData[Math.floor(Math.random() * vocabData.length)];
+            currentMCQCorrect = correctItem;
+            let wrongOptions = vocabData.filter(i => i.id !== correctItem.id).sort(() => 0.5 - Math.random()).slice(0, 3);
+            let options = [...wrongOptions, correctItem].sort(() => 0.5 - Math.random());
+            document.getElementById('mcq-word').innerText = correctItem.arabic;
+            document.getElementById('mcq-translit').innerText = `Root: ${correctItem.root}`;
+            const optionsContainer = document.getElementById('mcq-options');
+            optionsContainer.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:bg-slate-700 transition font-medium text-sm flex flex-col gap-1";
+                btn.dataset.id = opt.id;
+                btn.innerHTML = `<span class="text-slate-200 font-semibold">${opt.tamil}</span><span class="text-xs text-slate-400">${opt.english}</span>`;
+                btn.onclick = () => {
+                    const allButtons = document.querySelectorAll('#mcq-options button');
+                    allButtons.forEach(b => {
+                        b.disabled = true;
+                        if (parseInt(b.dataset.id) === correctItem.id) {
+                            b.className = "p-4 bg-emerald-900/90 border border-emerald-500 rounded-xl text-left font-medium text-sm flex flex-col gap-1 shadow text-white";
+                        }
+                    });
+                    if (opt.id === correctItem.id) {
+                        globalScore++;
+                        document.getElementById('dash-score').innerText = globalScore;
+                        document.getElementById('mcq-score').innerText = globalScore;
+                    } else {
+                        btn.className = "p-4 bg-rose-900/90 border border-rose-500 rounded-xl text-left font-medium text-sm flex flex-col gap-1 shadow text-white";
+                    }
+                };
+                optionsContainer.appendChild(btn);
+            });
+        }
+
         function initRootQuiz() {
             const correctItem = vocabData[Math.floor(Math.random() * vocabData.length)];
             document.getElementById('root-word').innerText = correctItem.arabic;
             document.getElementById('root-meaning').innerText = `Meaning: ${correctItem.tamil} (${correctItem.english})`;
             const container = document.getElementById('root-options');
             container.innerHTML = '';
-            [correctItem.root, "م-ن", "أ-ل-ه", "ف-ي"].sort(() => 0.5 - Math.random()).forEach(opt => {
+            
+            // Get 3 unique wrong roots plus correct root
+            let wrongRoots = [...new Set(vocabData.filter(i => i.root !== correctItem.root).map(i => i.root))].sort(() => 0.5 - Math.random()).slice(0, 3);
+            let rootOptions = [...wrongRoots, correctItem.root].sort(() => 0.5 - Math.random());
+
+            rootOptions.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = "p-4 bg-slate-900 border border-slate-700 rounded-xl text-center hover:bg-slate-700 transition font-mono font-bold text-lg text-indigo-300";
+                btn.dataset.root = opt;
                 btn.innerText = opt;
                 btn.onclick = () => {
-                    if(opt === correctItem.root) { globalScore++; document.getElementById('root-score').innerText = globalScore; btn.className = "p-4 bg-emerald-900 border border-emerald-500 rounded-xl text-center font-mono font-bold text-lg text-white"; }
-                    else { btn.className = "p-4 bg-rose-900 border border-rose-500 rounded-xl text-center font-mono font-bold text-lg text-white"; }
+                    const allButtons = document.querySelectorAll('#root-options button');
+                    allButtons.forEach(b => {
+                        b.disabled = true;
+                        if (b.dataset.root === correctItem.root) {
+                            b.className = "p-4 bg-emerald-900 border border-emerald-500 rounded-xl text-center font-mono font-bold text-lg text-white shadow";
+                        }
+                    });
+                    if (opt === correctItem.root) { 
+                        globalScore++; 
+                        document.getElementById('root-score').innerText = globalScore; 
+                    } else { 
+                        btn.className = "p-4 bg-rose-900 border border-rose-500 rounded-xl text-center font-mono font-bold text-lg text-white shadow"; 
+                    }
                 };
                 container.appendChild(btn);
             });
         }
+
         let speedTimer = 120, speedInterval = null, speedScoreVal = 0;
         let speedDeck = [];
 
@@ -345,7 +403,6 @@
             speedTimer = 120; speedScoreVal = 0;
             document.getElementById('speed-score').innerText = speedScoreVal;
             
-            // Freshly shuffle deck so words don't repeat
             speedDeck = [...vocabData].sort(() => 0.5 - Math.random());
 
             speedInterval = setInterval(() => {
@@ -363,7 +420,6 @@
         function nextSpeedRound() {
             if (speedTimer <= 0) return;
             
-            // Reshuffle automatically if deck runs out
             if (speedDeck.length === 0) {
                 speedDeck = [...vocabData].sort(() => 0.5 - Math.random());
             }
